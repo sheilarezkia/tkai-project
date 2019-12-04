@@ -31,9 +31,7 @@ public class FoodTrackerController {
     @PostMapping(value = "/addFoodTracker", produces = "application/json")
     @ResponseBody
     public ResponseEntity<Object> addFood(@RequestBody Map<String, String> body) {
-            FoodTracker newFoodTrack = service.saveFoodData(body.get("date"), body.get("foodname"), body.get("calory"), body.get("recipe"));
-
-        System.out.println(newFoodTrack.getDate().toString() + newFoodTrack.getCalory() + newFoodTrack.getFoodname());
+        FoodTracker newFoodTrack = service.saveFoodData(body.get("date"), body.get("foodname"), body.get("calory"), body.get("recipe"));
         return ResponseEntity.ok(newFoodTrack);
     }
 
