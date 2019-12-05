@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weight-diary-deployment
+  labels:
+    app: weight-diary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weight-diary
+  template:
+    metadata:
+      labels:
+        app: weight-diary
+        tier: backend
+    spec:
+      containers:
+        - name: weight-diary
+          image: weight-diary:latest
+          ports:
+            - containerPort: 8082
+              protocol: TCP
+          imagePullPolicy: Never

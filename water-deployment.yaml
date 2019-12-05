@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: water-diary-deployment
+  labels:
+    app: water-diary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: water-diary
+  template:
+    metadata:
+      labels:
+        app: water-diary
+        tier: backend
+    spec:
+      containers:
+      - name: water-diary
+        image: water-diary:latest
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        imagePullPolicy: Never

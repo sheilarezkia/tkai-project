@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: food-diary-deployment
+  labels:
+    app: food-diary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: food-diary
+  template:
+    metadata:
+      labels:
+        app: food-diary
+        tier: backend
+    spec:
+      containers:
+        - name: food-diary
+          image: food-diary:latest
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+          imagePullPolicy: Never
