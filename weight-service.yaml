@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: weight-service
+spec:
+  selector:
+    app: weight-diary
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
