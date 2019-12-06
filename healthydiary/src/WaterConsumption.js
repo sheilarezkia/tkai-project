@@ -3,31 +3,49 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
- 
+
 class WaterConsumption extends Component {
   constructor(props) {
     super();
-    this.state = { amount: 0, startDate: null };
+    this.state = { amount: 0, startDate: null, listAmount: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.getAmount();
+  }
+
+  getAmount() {
+    axios.get(`http://localhost:8083/waterIntakeRecs`)
+      .then(res => {
+        this.setState({ listAmount: res.data })
+        //  var currWeight = listWeight[listWeight.length-1]
+        //  this.setState({ currWeight })
+
+      })
+      .catch(error => {
+        console.log(error.response)
+      });;
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    var finalDate = this.state.startDate.getFullYear() + "-"+ parseInt(this.state.startDate.getMonth()+1) +"-"+this.state.startDate.getDate();
+    var finalDate = this.state.startDate.getFullYear() + "-" + parseInt(this.state.startDate.getMonth() + 1) + "-" + this.state.startDate.getDate();
 
-    axios.post(`http://localhost:8082/"/addIntakeData`, { 
+    axios.post(`http://localhost:8083/addIntakeData`, {
       'date': finalDate,
-      'amount': this.state.weight
-     })
+      'amount': this.state.amount
+    })
       .then(res => {
         console.log(res);
         console.log(res.data);
+        this.getAmount();
       })
       .catch(error => {
         console.log(error.response)
       });
-   
+
   }
 
   handleAmountChange = (event) => {
@@ -37,7 +55,7 @@ class WaterConsumption extends Component {
   state = {
     startDate: new Date()
   };
- 
+
   handleChange = date => {
     this.setState({
       startDate: date
@@ -45,27 +63,45 @@ class WaterConsumption extends Component {
   };
 
   render() {
+    const { listAmount } = this.state;
+    const listWater = listAmount.map((amt) =>
+      <React.Fragment>
+        <div className="food-group">
+          <li><b>Date : </b>{amt.date}</li>
+          <li><b>Amount : </b>{amt.amount}</li>
+        </div>
+      </React.Fragment>
+    );
+
     return (
-      <div>
-        {/* <h2 onClick={() => this.handlePencet()}>STUFF</h2> */}
-        <div className="form">
-          <p className="attribute">Date</p>
-          <DatePicker className="date-picker"
-            dateFormat="yyyy-dd-MM"
-            showPopperArrow={false}
-            selected={this.state.startDate}
-            onChange={this.handleChange}
-            name='sartDate'/>
+      <React.Fragment>
+        <form onSubmit={this.handleSubmit}>
+          {/* <h2 onClick={() => this.handlePencet()}>STUFF</h2> */}
+          <div className="form">
+            <p className="attribute">Date</p>
+            <DatePicker className="date-picker"
+              dateFormat="yyyy-dd-MM"
+              showPopperArrow={false}
+              selected={this.state.startDate}
+              onChange={this.handleChange}
+              name='sartDate' />
+          </div>
+          <div className="form">
+            <p className="attribute">Amount</p>
+            <input className="weight" type='text' name='amount' onChange={this.handleAmountChange}></input>
+            <p className="satuan">ml</p>
+          </div>
+          <button>Submit</button>
+        </form>
+        <h3 className="center">Water Tracker</h3>
+        <div className="report">
+          <span>
+            <p>{listWater}</p>
+          </span>
         </div>
-        <div className="form">
-          <p className="attribute">Amount</p>
-          <input className="weight" type='text' name='weight' onChange={this.handleAmountChange}></input>
-          <p className="satuan">ml</p>
-        </div>
-        <button>Submit</button>
-      </div>
+      </React.Fragment>
     );
   }
 }
- 
+
 export default WaterConsumption;

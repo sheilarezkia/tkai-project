@@ -31,9 +31,9 @@ h1, h2, p, ul, li {
   border: 1px solid black;
   border-radius: 1rem;
   border-color: #d4d4d5;
-  width: 500px;
   background-color: #fff;
-  margin-bottom: 1rem;
+  right: 0;
+  left: 0;
 }
 
 
@@ -74,9 +74,31 @@ h1, h2, p, ul, li {
   font-size: 1rem;
 }
 
+.display-inline{
+  display: inline-flex;
+}
+
+.food-group {
+  border: 1px solid #744251;
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 0.5rem;
+}
+
+li{
+  list-style: none;
+}
+.report{
+  overflow-y: scroll;
+  height: 350px;
+}
+.display-inline p {
+  margin-right: 1rem;
+}
+
 textarea{
   border-radius: 4px;
   resize: none;
+  font-size: 1rem;
 }
 
 .form input{
