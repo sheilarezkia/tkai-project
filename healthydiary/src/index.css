@@ -27,13 +27,15 @@ h1, h2, p, ul, li {
   font-family: 'Barlow', sans-serif;
 }
 
-.nav{
+.card{
   border: 1px solid black;
   border-radius: 1rem;
   border-color: #d4d4d5;
   width: 500px;
   background-color: #fff;
+  margin-bottom: 1rem;
 }
+
 
 .margin-none{
   margin:0;

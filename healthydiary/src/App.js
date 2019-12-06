@@ -15,7 +15,7 @@ class Main extends Component {
         <div>
           <h1 className="page-title center">Health Diary</h1>
           <h1 className="page-title center">Health Diary</h1>
-          <div className="nav">
+          <div className="card">
             <div className="header">
               <NavLink to="/weight" className="item">Weight Tracker</NavLink>
               <NavLink to="/food" className="item">Food Diary</NavLink>
@@ -26,6 +26,10 @@ class Main extends Component {
               <Route path="/food" component={FoodDiary}/>
               <Route path="/water" component={WaterConsumption}/>
             </div>
+          </div>
+          <div className="card">
+            <h3 className="center">Today's Diary</h3>
+
           </div>
         </div>
       </HashRouter>
