@@ -1,4 +1,8 @@
 # HEALTH DIARY
+TKAI 2019/2020  
+Fannyah Dita Cahya  
+Nadhifah Hanan  
+Sheila Rezkia  
 
 Health diary merupakan aplikasi yang dapat melakukan tracking kesehatan berupa informasi berat badan, jenis makanan, dan jumlah konsumsi air mineral. Aplikasi ini dikembangkan dengan membuat empat buah microservices yaitu  weight tracker service, food tracker service, water intake service, dan client service. Framework yang digunakan untuk membangun service weight tracker, food tracker, dan water intake adalah Spring Boot. Pada ketiga service tersebut dapat dilakukan create dan view all. Untuk client service, kami membuat tampilan front-end dengan React. Diharapkan dari client service tersebut, pengguna dapat melakukan input berat badan, konsumsi makanan, dan konsumsi air mineral. Pada client service juga ditampilkan rangkuman/statistik mengenai keseluruhan data yang telah di-input pengguna.
 
