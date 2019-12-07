@@ -16,7 +16,7 @@ class WaterConsumption extends Component {
   }
 
   getAmount() {
-    axios.get(`http://localhost:8083/waterIntakeRecs`)
+    axios.get(`http://weight-service/waterIntakeRecs`)
       .then(res => {
         this.setState({ listAmount: res.data })
         //  var currWeight = listWeight[listWeight.length-1]
@@ -33,7 +33,7 @@ class WaterConsumption extends Component {
 
     var finalDate = this.state.startDate.getFullYear() + "-" + parseInt(this.state.startDate.getMonth() + 1) + "-" + this.state.startDate.getDate();
 
-    axios.post(`http://localhost:8083/addIntakeData`, {
+    axios.post(`http://weight-service/addIntakeData`, {
       'date': finalDate,
       'amount': this.state.amount
     })

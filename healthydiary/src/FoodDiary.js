@@ -16,7 +16,7 @@ class FoodDiary extends Component {
   }
 
   getAllRecipe() {
-    axios.get(`http://localhost:8081/foodTrackerRecs`)
+    axios.get(`http://food-service/foodTrackerRecs`)
       .then(res => {
         this.setState({ listRecipe: res.data })
         //  var currWeight = listWeight[listWeight.length-1]
@@ -33,7 +33,7 @@ class FoodDiary extends Component {
 
     var finalDate = this.state.startDate.getFullYear() + "-" + parseInt(this.state.startDate.getMonth() + 1) + "-" + this.state.startDate.getDate();
 
-    axios.post(`http://localhost:8081/addFoodTracker`, {
+    axios.post(`http://food-service/addFoodTracker`, {
       'date': finalDate,
       'foodname': this.state.foodname,
       'calory': this.state.calory,

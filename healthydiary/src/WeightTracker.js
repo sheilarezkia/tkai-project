@@ -20,7 +20,7 @@ class WeightTracker extends Component {
   }
 
   getUsers() {
-    axios.get(`http://localhost:8082/weightTrackerRecs`)
+    axios.get(`http://weight-service/weightTrackerRecs`)
       .then(res => {
         this.setState({ listWeight: res.data })
         //  var currWeight = listWeight[listWeight.length-1]
@@ -38,7 +38,7 @@ class WeightTracker extends Component {
 
     var finalDate = this.state.startDate.getFullYear() + "-" + parseInt(this.state.startDate.getMonth() + 1) + "-" + this.state.startDate.getDate();
 
-    axios.post(`http://localhost:8082/addWeightTracker`, {
+    axios.post(`http://weight-service/addWeightTracker`, {
       'date': finalDate,
       'weight': this.state.weight
     })
