@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: weight-diary-deployment
+  name: client-deployment
   labels:
-    app: weight-diary
+    app: health-diary-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: weight-diary
+      app: health-diary-client
   template:
     metadata:
       labels:
-        app: weight-diary
-        tier: backend
+        app: health-diary-client
+        tier: frontend
     spec:
       containers:
-        - name: weight-diary
-          image: weight-diary:latest
+        - name: health-diary-client
+          image: health-diary-client:latest
           ports:
-            - containerPort: 9082
+            - containerPort: 3000
               protocol: TCP
           imagePullPolicy: Never
           resources:

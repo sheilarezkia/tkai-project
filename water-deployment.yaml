@@ -19,6 +19,9 @@ spec:
       - name: water-diary
         image: water-diary:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 9080
           protocol: TCP
         imagePullPolicy: Never
+        resources:
+          requests:
+            cpu: "200m"

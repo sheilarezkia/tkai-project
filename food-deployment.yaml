@@ -19,6 +19,9 @@ spec:
         - name: food-diary
           image: food-diary:latest
           ports:
-            - containerPort: 8081
+            - containerPort: 9081
               protocol: TCP
           imagePullPolicy: Never
+          resources:
+            requests:
+              cpu: "200m"
