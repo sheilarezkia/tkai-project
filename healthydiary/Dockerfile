@@ -9,7 +9,7 @@ COPY ["package.json", "package-lock.json*", "./"]
 
 # If you're using yarn:
 #  yarn build
-RUN npm install
+RUN npm install --verbose
 RUN npm run build
 CMD ["npm", "start"]
 # Expose PORT 3000 on our virtual machine so we can run our server
