@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,6 +18,7 @@ public class FoodTrackerController {
     @Autowired
     private FoodTrackerService service;
 
+    @CrossOrigin(origins = "*")
     @GetMapping(value = "/foodTrackerRecs", produces = "application/json")
     @ResponseBody
     public ResponseEntity<Collection<FoodTracker>> getAllRecords() {
@@ -28,6 +26,7 @@ public class FoodTrackerController {
         return ResponseEntity.ok(record);
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/addFoodTracker", produces = "application/json")
     @ResponseBody
     public ResponseEntity<Object> addFood(@RequestBody Map<String, String> body) {
