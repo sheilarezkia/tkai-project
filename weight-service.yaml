@@ -8,5 +8,5 @@ spec:
     app: weight-diary
   ports:
     - port: 9082
-      targetPort: 8082
+      targetPort: 9082
       nodePort: 32082

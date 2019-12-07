@@ -8,5 +8,5 @@ spec:
     app: food-diary
   ports:
     - port: 9081
-      targetPort: 8081
+      targetPort: 9081
       nodePort: 32081
